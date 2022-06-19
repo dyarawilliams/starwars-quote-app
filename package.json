@@ -1,7 +1,7 @@
 {
   "name": "starwars-quote-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A star wars quote app created using NodeJS, Express, EJS, and MongoDB",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js"
