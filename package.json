@@ -4,6 +4,7 @@
   "description": "A star wars quote app created using NodeJS, Express, EJS, and MongoDB",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "author": "D'yara Williams",
