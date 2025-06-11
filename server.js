@@ -1,8 +1,6 @@
-console.log('May Node be with you')
-
 const express = require('express')
 const bodyParser= require('body-parser')
-const MongoClient = require('mongodb').MongoClient
+const { MongoClient } = require('mongodb')
 const app = express()
 
 // DOT ENV Configuration
@@ -24,11 +22,8 @@ MongoClient.connect(process.env.DB_STRING, { useUnifiedTopology: true })
         // Handlers
         // CRUD - READ 
         app.get('/', (req, res) => {
-            // res.send('Hello World')
             quotesCollection.find().toArray()
                 .then(results => {
-                    console.log(results)
-                    // res.sendFile(__dirname + '/index.html')
                     res.render('index.ejs', { quotes: results })
                 })
                 .catch(error => console.error(error))
@@ -36,11 +31,8 @@ MongoClient.connect(process.env.DB_STRING, { useUnifiedTopology: true })
 
         // CRUD - CREATE 
         app.post('/quotes', (req, res) => {
-            // console.log('HellooooooooO!')
-            console.log(req.body)
             quotesCollection.insertOne(req.body)
                 .then(result => {
-                    console.log(result)
                     res.redirect('/')
                 })
                 .catch(error => console.error(error))
