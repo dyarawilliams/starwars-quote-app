@@ -9,10 +9,10 @@
 html,
 body {
     height: 100%;
+    font-size: 16px;
 }
 
 html {
-    font-size: 125%;
     line-height: 1.4;
     font-family: 'Open Sans', sans-serif;
     color: #ff6;
@@ -24,7 +24,7 @@ body {
     grid-template-rows: auto auto 2fr;
     grid-template-areas:
         "header header header"
-        "add-quotes update-quote delete-quote"
+        "add-quote update-quote delete-quote"
         "quotes quotes quotes";
     gap: 1rem;
     margin: 1em;
@@ -39,16 +39,16 @@ body {
     grid-area: header;
 }
 
-[data-position="add-quotes"] {
-    grid-area: add-quotes;
+[data-position="add-quote"] {
+    grid-area: add-quote;
 }
 
-[data-position="update-quotes"] {
-    grid-area: update-quotes;
+[data-position="update-quote"] {
+    grid-area: update-quote;
 }
 
-[data-position="delete-quotes"] {
-    grid-area: delete-quotes;
+[data-position="delete-quote"] {
+    grid-area: delete-quote;
 }
 
 [data-position="quotes"] {
@@ -88,14 +88,15 @@ h1,
 h2 {
     margin: 0;
     font-family: 'Poller One', cursive;
+    font-size: 1.5rem;
 }
 
 input[type=text] {
     width: 80%;
+    margin: 10px auto;
+    padding: 10px;
     border: none;
     background-color: #cdcdcd;
-    margin: 4px 2px;
-    padding: 15px;
     border-radius: 5px;
 }
 
@@ -118,4 +119,49 @@ button:hover {
 
 .quote {
     list-style-type: none;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-areas:
+            "header"
+            "add-quote"
+            "update-quote"
+            "delete-quote"
+            "quotes";
+    }
+
+    [data-position="header"] {
+        text-align: center;
+    }
+    
+}
+
+@media screen and (min-width: 769px) {
+    body {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "header header"
+            "add-quote add-quote"
+            "update-quote delete-quote"
+            "quotes quotes";
+    }
+
+    [data-position="header"] {
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 992px){
+    body {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "header header header"
+            "add-quote update-quote delete-quote"
+            "quotes quotes quotes";
+    }
 }
