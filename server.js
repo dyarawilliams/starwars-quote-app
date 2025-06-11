@@ -22,7 +22,7 @@ MongoClient.connect(process.env.DB_STRING, { useUnifiedTopology: true })
         // Handlers
         // CRUD - READ 
         app.get('/', (req, res) => {
-            quotesCollection.find().toArray()
+            quotesCollection.find({}).toArray()
                 .then(results => {
                     res.render('index.ejs', { quotes: results })
                 })
@@ -39,7 +39,6 @@ MongoClient.connect(process.env.DB_STRING, { useUnifiedTopology: true })
         })
         // CRUD - UPDATE
         app.put('/quotes', (req, res) => {
-            console.log(req.body)
                 quotesCollection.findOneAndUpdate(
                     { name: 'Yoda' },
                     {
@@ -51,7 +50,6 @@ MongoClient.connect(process.env.DB_STRING, { useUnifiedTopology: true })
                     { upsert: true }
                 )
                 .then(result => {
-                    console.log(result)
                     res.json('Success')
                 })
                 .catch(error => console.error(error))
